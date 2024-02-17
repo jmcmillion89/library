@@ -1,4 +1,101 @@
 * {
     margin: 0;
     padding: 0;
+    /* border: 1px solid black; */
+}
+
+body {
+    position: relative;
+    margin: 1rem;
+    background-color: #082f49;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.grid-box {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 50px auto;
+    grid-template-areas: 
+    'header'
+    'menu'
+    'cards';
+}
+
+.header {
+    grid-area: header;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    color: white;
+}
+
+.menu {
+    grid-area: menu;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+#show-button {
+    width: 100px;
+    height: 50%;
+    background-color: #0284c7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.cards {
+    grid-area: cards;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
+}
+
+.cards > * {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    background-color: #0284c7;
+    border: 2px solid #e7e7e7;
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.cards > * > button {
+    display: flex;
+    justify-content: center;
+    background-color: #082f49;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 1px;
+    width: 7ch;
+    align-self: flex-end;
+    
+}
+
+dialog {
+    width: 200px;
+    padding: 1rem;
+    top: 20%;
+    left: 50%;
+    line-height: 1.5rem;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+dialog > button {
+    padding-top: 20px;
+}
+
+dialog::backdrop {
+    backdrop-filter: blur(10px);
 }

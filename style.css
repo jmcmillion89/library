@@ -1,0 +1,46 @@
+* {
+  /* border: solid 1px red; */
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.header > h2 {
+  flex: 2;
+  text-align: center;
+
+}
+
+.nav {
+  flex: 1;
+
+}
+
+.library {
+  display: flex;
+  flex-flow: column;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  padding: 1rem;
+}
+
+.card * {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.card > select {
+  width: 25%;
+}
+
+.card > button {
+  width: 25%;
+}

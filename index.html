@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="header">
+    <h2>Library</h2>
+    <div class="nav">
+      <button id="addBook">Add Book</button>
+    </div>
+  </div>
+  <div class="library">
+
+  </div>
+
+<dialog id="bookDialog" aria-labelledby="modalTitle">
+  <h2 id="modalTitle">Add a Book</h2>
+  <form id="bookForm">
+    <label>
+      Title
+      <input type="text" id="title" name="title" required />
+    </label>
+    <label>
+      Author
+      <input type="text" id="author" name="author" required />
+    </label>
+    <label>
+      Status
+      <select id="status" name="status">
+        <option value="unread">Unread</option>
+        <option value="read">Read</option>
+      </select>
+    </label>
+    <div class="actions">
+      <button type="button" id="cancelModal">Cancel</button>
+      <button type="submit">Save</button>
+    </div>
+  </form>
+</dialog>
+
+</body>
+<script src="script.js"></script>
+</html>

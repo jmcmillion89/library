@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -8,16 +8,29 @@ function Book(title, author, pages, read) {
   this.id = crypto.randomUUID()
 }
 
-const fillerBookOne = new Book('A Book', 'Someone', 123, true)
-
 function addBookToLibrary(title, author, pages, read) {
   let newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook)
 }
 
+function updateRead(index) {
+  if (myLibrary[index].read === true) {
+    myLibrary[index].read = false;
+  }
+  else {
+    myLibrary[index].read = true;
+  }
+}
+
+function removeBook() {
+  console.log('remove book')
+}
+
 function getLibrary() {
-    myLibrary.forEach((book) => {
-        const libraryDiv = document.querySelector('.library');
+    const libraryDiv = document.querySelector('.library');
+    libraryDiv.textContent = '';
+    myLibrary.forEach((book, index) => {
+        let id = book.id
         const newDiv = document.createElement('div');
         const titleHeader = document.createElement('h3');
         const titleText = document.createElement('p')
@@ -25,6 +38,9 @@ function getLibrary() {
         const authorText = document.createElement('p')
         const pagesHeader = document.createElement('h3');
         const pagesText = document.createElement('p')
+        const readHeader = document.createElement('h3');
+        const readCheckBox = document.createElement('input')
+        const deleteBtn = document.createElement('button')
         newDiv.classList = 'card'
         titleHeader.textContent = 'Title: '
         newDiv.appendChild(titleHeader)
@@ -38,6 +54,19 @@ function getLibrary() {
         newDiv.appendChild(pagesHeader)
         pagesText.textContent = `${book.pages}`
         newDiv.appendChild(pagesText)
+        readHeader.textContent = 'Read? '
+        newDiv.appendChild(readHeader)
+        readCheckBox.setAttribute('type', 'checkbox')
+        readCheckBox.checked = book.read
+        readCheckBox.addEventListener('click', () => {
+          updateRead(index)
+        })
+        newDiv.appendChild(readCheckBox)
+        deleteBtn.textContent = "X"
+        deleteBtn.addEventListener('click', (e) => {
+          removeBook(e)
+        })
+        newDiv.appendChild(deleteBtn)
         libraryDiv.appendChild(newDiv)
 
 

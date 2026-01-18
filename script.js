@@ -22,8 +22,10 @@ function updateRead(index) {
   }
 }
 
-function removeBook() {
-  console.log('remove book')
+function removeBook(id) {
+  let newLibrary = myLibrary.filter((book) => book.id !== id)
+  myLibrary = newLibrary
+  getLibrary()
 }
 
 function getLibrary() {
@@ -63,8 +65,8 @@ function getLibrary() {
         })
         newDiv.appendChild(readCheckBox)
         deleteBtn.textContent = "X"
-        deleteBtn.addEventListener('click', (e) => {
-          removeBook(e)
+        deleteBtn.addEventListener('click', () => {
+          removeBook(id)
         })
         newDiv.appendChild(deleteBtn)
         libraryDiv.appendChild(newDiv)
@@ -76,4 +78,9 @@ function getLibrary() {
 
 addBookToLibrary('test book 1', 'test author 1', 234, true)
 addBookToLibrary('test book 2', 'test author 2', 334, false)
+addBookToLibrary('test book 3', 'test author 3', 334, false)
+addBookToLibrary('test book 4', 'test author 4', 334, true)
+addBookToLibrary('test book 5', 'test author 5', 334, false)
+addBookToLibrary('test book 6', 'test author 6', 334, false)
+
 getLibrary()

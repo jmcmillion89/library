@@ -76,6 +76,27 @@ function getLibrary() {
     })
 }
 
+const dialog = document.querySelector('dialog')
+const showButton = document.querySelector('.add-book')
+const closeButton = document.querySelector('dialog button')
+
+function getFormValues() {
+  const title = document.querySelector('#title').value
+  const author = document.querySelector('#author').value
+  const pages = document.querySelector('#pages').value
+  const read = document.querySelector('#read').checked
+  addBookToLibrary(title, author, pages, read)
+}
+
+
+showButton.addEventListener('click', () => {
+  dialog.showModal();
+})
+
+closeButton.addEventListener('click', () => {
+  getFormValues()
+  dialog.close()
+})
 
 addBookToLibrary('To Kill a Mockingbird', 'Harper Lee', 323, false)
 addBookToLibrary('1984', 'George Orwell', 328, true)

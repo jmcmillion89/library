@@ -77,24 +77,33 @@ function getLibrary() {
 }
 
 const dialog = document.querySelector('dialog')
-const showButton = document.querySelector('.add-book')
-const closeButton = document.querySelector('dialog button')
+const showDialogBtn = document.querySelector('.add-book')
+const addBookBtn = document.querySelector('#dialog-add')
+const closeDialogBtn = document.querySelector('#dialog-close')
 
 function getFormValues() {
+  const form = document.querySelector('dialog form')
   const title = document.querySelector('#title').value
   const author = document.querySelector('#author').value
   const pages = document.querySelector('#pages').value
   const read = document.querySelector('#read').checked
   addBookToLibrary(title, author, pages, read)
+  form.reset()
 }
 
 
-showButton.addEventListener('click', () => {
+showDialogBtn.addEventListener('click', () => {
   dialog.showModal();
 })
 
-closeButton.addEventListener('click', () => {
+addBookBtn.addEventListener('click', (e) => {
   getFormValues()
+  e.preventDefault()
+  dialog.close()
+})
+
+closeDialogBtn.addEventListener('click', (e) => {
+  e.preventDefault()
   dialog.close()
 })
 

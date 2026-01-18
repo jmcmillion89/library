@@ -78,7 +78,7 @@ header button:hover {
     padding-bottom: .5rem;
 }
 
-.card input[type="checkbox"]:checked {
+input[type="checkbox"]:checked {
     accent-color: var(--bg-color-one);
 }
 
@@ -104,4 +104,54 @@ header button:hover {
 .card-button button:hover {
     background-color: red;
     cursor: pointer;
+}
+
+dialog:open {
+    background-color: var(--bg-color-three);
+    border: 2px solid black;
+    color: var(--bg-color-two);
+    font-size: 2rem;
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+dialog form input {
+    width: 100%;
+    outline: none;
+    border: none;
+    margin-bottom: 1rem;
+}
+
+dialog form input:focus {
+    outline: none;
+    background-color: var(--bg-color-one);
+    box-shadow: var(--shadow-down);
+}
+
+dialog::backdrop {
+    backdrop-filter: blur(.5rem);
+}
+
+dialog button {
+    background-color: var(--bg-color-two);
+    color: var(--bg-color-three);
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 1rem;
+    padding: 5px;
+}
+
+dialog button:hover {
+    background-color: var(--bg-color-one);
+    color: var(--dark-text);
+    cursor: pointer;
+    box-shadow: var(--shadow-down);
 }

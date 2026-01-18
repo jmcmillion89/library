@@ -2,19 +2,21 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    /* border: 1px solid black */
 }
 
 :root {
-    --bg-color-one: rgb(10, 44, 10);
-    --bg-color-two: gray;
-    --light-text: white;
-    --dark-text: black;
+    --bg-color-one: #FF7A30;
+    --bg-color-two: #465C88;
+    --bg-color-three: #E9E3DF;
+    --dark-text: #000000;
+    --shadow-down: 1px 1px 5px 0px rgba(0,0,0,0.5);
+    --shadow-up: -1px -1px 5px 0px rgba(0,0,0,0.5);;
 }
 
 body {
     display: grid;
-    align-items: center;
-    justify-items: center;
+    background-color: var(--bg-color-two);
     height: 100vh;
     grid-template-columns: 1fr;
     grid-template-rows: 100px 1fr 100px;
@@ -27,22 +29,66 @@ body {
 header {
     grid-area: header;
     background-color: var(--bg-color-one);
-    color: var(--light-text);
+    color: var(--dark-text);
+    box-shadow: var(--shadow-down);
 }
 
 .library {
     grid-area: library;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 2rem;
 }
 
 .card {
-    border: 3px solid black;
+    display: flex;
+    background-color: var(--bg-color-three);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: 3px solid var(--bg-color-one);
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: var(--shadow-down);
+}
+
+.card p {
+    padding-bottom: .5rem;
+}
+
+.card input[type="checkbox"]:checked {
+    accent-color: var(--bg-color-one);
+}
+
+.card input[type="checkbox"]:hover {
+    cursor: pointer;
+}
+
+.card-button {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card-button button {
+    color: var(--bg-color-three);
+    background-color: var(--bg-color-one);
+    border: none;
+    border-radius: 15px;
+    width: 2rem;
+    height: 2rem
+}
+
+.card-button button:hover {
+    background-color: red;
+    cursor: pointer;
 }
 
 footer {
     grid-area: footer;
     background-color: var(--bg-color-one);
-    color: var(--light-text);
+    color: var(--dark-text);
+    box-shadow: var(--shadow-up);
 }

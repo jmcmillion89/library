@@ -1,4 +1,4 @@
-let myLibrary = [];
+const myLibrary = [];
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -14,20 +14,19 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(title, author, pages, read) {
   let newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook)
-  getLibrary()
+  displayLibrary()
 }
 
 
-function removeBook(id) {
-  let newLibrary = myLibrary.filter((book) => book.id !== id)
-  myLibrary = newLibrary
-  getLibrary()
+function removeBook(index) {
+  myLibrary.splice(index, 1)
+  displayLibrary()
 }
 
-function getLibrary() {
+function displayLibrary() {
     const libraryDiv = document.querySelector('.library');
     libraryDiv.textContent = '';
-    myLibrary.forEach((book) => {
+    myLibrary.forEach((book, index) => {
         const newDiv = document.createElement('div');
         const btnDiv = document.createElement('div')
         const titleHeader = document.createElement('h3');
@@ -63,7 +62,7 @@ function getLibrary() {
         btnDiv.classList = 'card-button'
         deleteBtn.textContent = "X"
         deleteBtn.addEventListener('click', () => {
-          return removeBook(book.id)
+          return removeBook(index)
         })
         btnDiv.appendChild(deleteBtn)
         newDiv.appendChild(btnDiv)
@@ -107,4 +106,4 @@ addBookToLibrary('1984', 'George Orwell', 328, true)
 addBookToLibrary('The Lord of the Rings', 'J.R.R. Tolkien', 1216, true)
 addBookToLibrary('The Lion, the Witch and the Wardrobe', 'C.S. Lewis', 206, true)
 
-getLibrary()
+displayLibrary()

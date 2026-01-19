@@ -6,6 +6,9 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
   this.id = crypto.randomUUID()
+  this.updateRead = function() {
+    this.read = this.read === true ? false : true;
+  }
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -14,14 +17,6 @@ function addBookToLibrary(title, author, pages, read) {
   getLibrary()
 }
 
-function updateRead(index) {
-  if (myLibrary[index].read === true) {
-    myLibrary[index].read = false;
-  }
-  else {
-    myLibrary[index].read = true;
-  }
-}
 
 function removeBook(id) {
   let newLibrary = myLibrary.filter((book) => book.id !== id)
@@ -32,7 +27,7 @@ function removeBook(id) {
 function getLibrary() {
     const libraryDiv = document.querySelector('.library');
     libraryDiv.textContent = '';
-    myLibrary.forEach((book, index) => {
+    myLibrary.forEach((book) => {
         const newDiv = document.createElement('div');
         const btnDiv = document.createElement('div')
         const titleHeader = document.createElement('h3');
@@ -62,13 +57,13 @@ function getLibrary() {
         readCheckBox.setAttribute('type', 'checkbox')
         readCheckBox.checked = book.read
         readCheckBox.addEventListener('click', () => {
-          updateRead(index)
+          return book.updateRead()
         })
         newDiv.appendChild(readCheckBox)
         btnDiv.classList = 'card-button'
         deleteBtn.textContent = "X"
         deleteBtn.addEventListener('click', () => {
-          removeBook(book.id)
+          return removeBook(book.id)
         })
         btnDiv.appendChild(deleteBtn)
         newDiv.appendChild(btnDiv)

@@ -1,14 +1,17 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
+class Book {
+  constructor(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
-  this.id = crypto.randomUUID()
-  this.updateRead = function() {
-    this.read = this.read === true ? false : true;
+  this.id = crypto.randomUUID();
   }
+  
+  get updateRead() {
+    this.read = this.read === true ? false : true;
+  };
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -56,7 +59,7 @@ function displayLibrary() {
         readCheckBox.setAttribute('type', 'checkbox')
         readCheckBox.checked = book.read
         readCheckBox.addEventListener('click', () => {
-          return book.updateRead()
+          return book.updateRead
         })
         newDiv.appendChild(readCheckBox)
         btnDiv.classList = 'card-button'
